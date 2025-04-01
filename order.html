@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Wriothesley Baked Goods</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Wriothesley Baked Goods Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Place Your Order</h2>
+        <form id="orderForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="orderDetails">Your Order:</label>
+            <textarea id="orderDetails" name="orderDetails" placeholder="List the items you want to order" required></textarea>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="">Select a payment option</option>
+                <option value="in-store">Pay in Store</option>
+                <option value="online">Online Transfer</option>
+            </select>
+
+            <div id="transferDetails" style="display: none;">
+                <label for="transferScreenshot">Upload Transfer Screenshot:</label>
+                <input type="file" id="transferScreenshot" name="transferScreenshot" accept="image/*">
+            </div>
+
+            <button type="submit">Submit Order</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Wriothesley Baked Goods. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
