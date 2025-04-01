@@ -1,0 +1,63 @@
+// Contact Form Validation
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+    
+    if (name === "" || email === "" || message === "") {
+        alert("All fields are required!");
+        return false;
+    }
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        alert("Please enter a valid email address!");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+
+// Order Form Validation
+function validateOrderForm() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let paymentMethod = document.querySelector('input[name="payment"]:checked');
+    let transferProof = document.getElementById("transfer-proof");
+
+    if (name === "" || email === "") {
+        alert("Please fill in all required fields.");
+        return false;
+    }
+
+    if (!paymentMethod) {
+        alert("Please select a payment method.");
+        return false;
+    }
+
+    if (paymentMethod.value === "online" && transferProof.files.length === 0) {
+        alert("Please upload a screenshot of your transfer.");
+        return false;
+    }
+
+    generateReceipt(name, email, paymentMethod.value);
+    return false; // Prevents form submission for demonstration
+}
+
+// Generate Receipt for Order Form
+function generateReceipt(name, email, paymentMethod) {
+    let orderNumber = "ORD" + Math.floor(Math.random() * 100000);
+    
+    let receiptMessage = `
+        Order Confirmation\n
+        ---------------------------\n
+        Name: ${name}\n
+        Email: ${email}\n
+        Order Number: ${orderNumber}\n
+        Payment Method: ${paymentMethod === "online" ? "Online Transfer" : "In-Store Payment"}\n
+        ${paymentMethod === "online" ? "Your transfer has been verified." : "Please pay at the store."}
+    `;
+
+    alert(receiptMessage);
+}
